@@ -21,6 +21,12 @@ jobs:
     - name: Install .NET Android Workload
       run: dotnet workload install android
 
+    - name: Fix invalid XML entities in i18n AXAML files
+      run: |
+        for f in GalaxyBudsClient/i18n/*.axaml; do
+          perl -i -pe 's/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/&amp;/g' "$f"
+        done
+
     - name: Restore dependencies
       run: dotnet restore GalaxyBudsClient.Android/GalaxyBudsClient.Android.csproj
 
