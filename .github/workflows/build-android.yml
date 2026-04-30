@@ -22,9 +22,7 @@ jobs:
       run: dotnet workload install android
 
     - name: Restore dependencies
-      run: |
-        cd GalaxyBudsClient.Android
-        dotnet restore -p:TargetFramework=net10.0-android36.1
+      run: dotnet restore GalaxyBudsClient.Android/GalaxyBudsClient.Android.csproj
 
     - name: Build and Publish Android APK
       run: |
