@@ -24,7 +24,7 @@ jobs:
     - name: Restore dependencies
       run: |
         cd GalaxyBudsClient.Android
-        dotnet restore -f net10.0-android
+        dotnet restore -p:TargetFramework=net10.0-android
 
     - name: Build and Publish Android APK
       run: |
