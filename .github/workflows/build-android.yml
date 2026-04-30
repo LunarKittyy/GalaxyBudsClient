@@ -27,7 +27,7 @@ jobs:
     - name: Build and Publish Android APK
       run: |
         cd GalaxyBudsClient.Android
-        dotnet publish -c Release -f net10.0-android36.1 --no-restore
+        dotnet publish -c Release -f net10.0-android36.1 --no-restore -p:BuildInParallel=false
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
