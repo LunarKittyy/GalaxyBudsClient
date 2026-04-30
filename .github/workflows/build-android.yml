@@ -24,16 +24,16 @@ jobs:
     - name: Restore dependencies
       run: |
         cd GalaxyBudsClient.Android
-        dotnet restore -p:TargetFramework=net10.0-android
+        dotnet restore -p:TargetFramework=net10.0-android36.1
 
     - name: Build and Publish Android APK
       run: |
         cd GalaxyBudsClient.Android
-        dotnet publish -c Release -f net10.0-android
+        dotnet publish -c Release -f net10.0-android36.1 --no-restore
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
         name: GalaxyBudsClient-Android-APK
-        path: GalaxyBudsClient.Android/bin/Release/net10.0-android/**/publish/*.apk
+        path: GalaxyBudsClient.Android/bin/Release/net10.0-android36.1/**/publish/*.apk
         if-no-files-found: warn
